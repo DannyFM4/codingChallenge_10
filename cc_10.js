@@ -13,7 +13,7 @@ class Product { // lines below create a class called Product
     };
 
     updateStock(quantity) { // creates a method in the class that will update that prducts stock
-        return this.stock -= quantity
+        return this.stock -= quantity;
     };
 };
 
@@ -24,3 +24,31 @@ console.log(prod1.getDetails()); // uses the method to list all details
 // updates the product 1 stock
 prod1.updateStock(3);
 console.log(prod1.getDetails()); // logs the updates details in the console
+
+
+// Task 2: Creating an Order Class
+
+
+class Order { // creates a new class named Order
+    constructor(orderID, product, quantity) {
+
+        this.orderID = orderID;
+        this.product = product;
+        this.quantity = quantity;
+
+        this.product.updateStock(quantity); // this line makes sure that the stock from product class is updated everytime there is an order
+    };
+
+
+
+    getOrderDetails() { // creates a method inside the class that returns all of the details
+        return `OrderID: ${this.orderID}, Product: ${this.product.name}, Quantity: ${this.quantity}`
+    };
+};
+
+// creates a order using the parameters and pulling the product name from prod1
+const order1 = new Order(501, prod1, 2);
+
+// runs the methods in the class and logs it in the console
+console.log(order1.getOrderDetails());
+console.log(prod1.getDetails());
