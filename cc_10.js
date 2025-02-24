@@ -84,9 +84,9 @@ class Inventory {  // these lines create a new class called Inventory
         this.orders.forEach(order => console.log(order.getOrderDetails()) ); // goes through the array, runs the getOrderDetails method, and logs it in the console
     };
 
-    restockProduct(productId, quantity) {
-        const stockParameter = this.products.find(product => product.id === productId);
-        if (stockParameter) {
+    restockProduct(productId, quantity) { // creates a method inside the class
+        const stockParameter = this.products.find(product => product.id === productId); // makes the parameters for if statement. asking to make product id exactly equal to the id
+        if (stockParameter) { // creates if statement, if id equal to id then increase the stock
             stockParameter.increaseStock(quantity);
         };
     };
@@ -113,5 +113,7 @@ console.log(prod1.getDetails());
 
 // Task 5: Implementing Product Restocking
 
+// runs method with the parameters provided
 inventory.restockProduct(101, 5);
+// logs the updated prod1 in the console
 console.log(prod1.getDetails()); 
