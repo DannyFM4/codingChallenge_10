@@ -46,7 +46,7 @@ class Order { // creates a new class named Order
 
 
     getOrderDetails() { // creates a method inside the class that returns all of the details
-        return `OrderID: ${this.orderID}, Product: ${this.product.name}, Quantity: ${this.quantity}`
+        return `OrderID: ${this.orderID}, Product: ${this.product.name}, Quantity: ${this.quantity}, Total Price: $${(this.quantity * this.product.price)}`
     };
 };
 
@@ -87,7 +87,7 @@ class Inventory {  // these lines create a new class called Inventory
     restockProduct(productId, quantity) { // creates a method inside the class
         const stockParameter = this.products.find(product => product.id === productId); // makes the parameters for if statement. asking to make product id exactly equal to the id
         if (stockParameter) { // creates if statement, if id equal to id then increase the stock
-            stockParameter.increaseStock(quantity);
+            stockParameter.increaseStock(quantity); // runs method using the quantity
         };
     };
 };
