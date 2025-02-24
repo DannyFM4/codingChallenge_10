@@ -15,6 +15,10 @@ class Product { // lines below create a class called Product
     updateStock(quantity) { // creates a method in the class that will update that prducts stock
         return this.stock -= quantity;
     };
+
+    increaseStock(quantity) {
+        this.stock += quantity;
+    };
 };
 
 // creates a new product using the class parameters
@@ -79,6 +83,13 @@ class Inventory {  // these lines create a new class called Inventory
     listOrders() { // creates new method inside the array
         this.orders.forEach(order => console.log(order.getOrderDetails()) ); // goes through the array, runs the getOrderDetails method, and logs it in the console
     };
+
+    restockProduct(productId, quantity) {
+        const stockParameter = this.products.find(product => product.id === productId);
+        if (stockParameter) {
+            stockParameter.increaseStock(quantity);
+        };
+    };
 };
 
 // creates a new inventory
@@ -98,3 +109,9 @@ inventory.listOrders(); // runs the method
 
 // logs the updated product details
 console.log(prod1.getDetails());
+
+
+// Task 5: Implementing Product Restocking
+
+inventory.restockProduct(101, 5);
+console.log(prod1.getDetails()); 
