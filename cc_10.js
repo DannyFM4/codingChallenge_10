@@ -58,8 +58,9 @@ console.log(prod1.getDetails());
 
 class Inventory {  // these lines create a new class called Inventory
     constructor() {
-        // creates an open array (products)
+        // creates an open array (products and orders)
         this.products = [];
+        this.orders = []
     };
 
     addProduct(product){ // creates a method inside the class that will add a product to the products array
@@ -68,6 +69,15 @@ class Inventory {  // these lines create a new class called Inventory
 
     listProducts() { // goes through the products array, runs the getDetails method
         this.products.forEach(product => console.log(product.getDetails()) );
+    };
+
+    placeOrder(orderId, product, quantity) { // creates method inside of the class
+        const order = new Order(orderId, product, quantity); // creates a new order
+        this.orders.push(order); // adds order to the open array
+    };
+
+    listOrders() { // creates new method inside the array
+        this.orders.forEach(order => console.log(order.getOrderDetails()) ); // goes through the array, runs the getOrderDetails method, and logs it in the console
     };
 };
 
@@ -78,3 +88,13 @@ const inventory = new Inventory();
 inventory.addProduct(prod1);
 // runs the listProducts method after adding a product to the open array
 inventory.listProducts();
+
+
+// Task 4: Implementing Order Management
+
+// runs the place order method using the parameters
+inventory.placeOrder(601, prod1, 2);
+inventory.listOrders(); // runs the method
+
+// logs the updated product details
+console.log(prod1.getDetails());
